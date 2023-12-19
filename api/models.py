@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User
 from django.db import models
 
+from accounts.models import CustomUser
 # Create your models here.
 
 
@@ -20,12 +20,8 @@ class Task(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=...)
     due_date = models.DateTimeField()
-    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    creator = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self) -> str:
         return "<Task: %s>" % self.name[:20]+'...' if len(self.name) > 21 else self.name
-
-
-
-
 

@@ -16,7 +16,6 @@ from .serializers import TaskSerializer
 
 
 @api_view(["GET"])
-@authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def task_list(request):
     tasks = Task.objects.all()
@@ -25,7 +24,6 @@ def task_list(request):
 
 
 @api_view(["POST"])
-@authentication_classes([JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def create_task(request):
     serializer = TaskSerializer(data=request.data)
@@ -36,6 +34,7 @@ def create_task(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
+@permission_classes([IsAuthenticated])
 def task_detail(request, pk):
     try:
         task = Task.objects.get(id=pk)

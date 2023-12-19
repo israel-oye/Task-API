@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'rest_framework',
-    'rest_framework_simplejwt',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +95,10 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+
+#User Model
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 
 # Password validation
